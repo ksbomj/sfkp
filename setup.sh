@@ -61,4 +61,4 @@ docker logs producer
 
 echo "\n${GREEN}Consuming events"
 
-docker-compose -f  kafka-docker-compose.yml -f ppe-docker-compose.yml logs consumer1 consumer2 consumer3 consumer4 consumer5
+docker-compose -f  kafka-docker-compose.yml -f ppe-docker-compose.yml logs -f consumer1 consumer2 consumer3 consumer4 consumer5
