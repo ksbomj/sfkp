@@ -28,4 +28,4 @@ Didn't spend a lot of time on schema because of few reasons:
 
 2. I didn't get why I need to use an "Avro" schema for Kafka (I know it's optional) and why they invented it. I'm looking into something like gob, messagepack or at least protobuf to use for future.
 	
-Schema files are located [here](https://github.com/ksbomj/sfkp/docker/producer/events-schema).
+Schema files are located [here](https://github.com/ksbomj/sfkp/tree/main/docker/producer/events-schema).
