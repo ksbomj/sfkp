@@ -3,6 +3,6 @@
     "name": "order-picked-and-packed",
     "timestamp": 1631661639,
     "body": {
-	"order_id": "3604a2a4-15b2-11ec-82a8-0242ac130003",
+	    "order_id": "3604a2a4-15b2-11ec-82a8-0242ac130003"
     }
 }

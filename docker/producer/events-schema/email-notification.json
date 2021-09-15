@@ -3,10 +3,10 @@
     "name": "email-notification",
     "timestamp": 1631661639,
     "body": {
-	"from": "foo@bar.com",
-	"to": ["fiz@baz.com"],
-	"bcc": ["fuzz@baz.com"],
-	"subject": "Demo subject",
-	"body": "Some text",
+      "from": "foo@bar.com",
+      "to": ["fiz@baz.com"],
+      "bcc": ["fuzz@baz.com"],
+      "subject": "Demo subject",
+      "body": "Some text"
     }
 }

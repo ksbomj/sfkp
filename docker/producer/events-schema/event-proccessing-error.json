@@ -3,20 +3,20 @@
     "name": "event-proccessing-error",
     "timestamp": 1631661639,
     "body": {
-	"event": {
-	    "id": "2e091c74-15b2-11ec-82a8-0242ac130003",
-	    "name": "email-notification",
-	    "timestamp": 1631661639,
-	    "body": {
-		"from": "foo@bar.com",
-		"to": ["fiz@baz.com"],
-		"bcc": ["fuzz@baz.com"],
-		"subject": "Demo subject",
-		"body": "Some text",
-	    }
-	},
-	"context": {
-	    "error": "Cannot authintificate to SMTP server"
-	}
+		"event": {
+			"id": "2e091c74-15b2-11ec-82a8-0242ac130003",
+			"name": "email-notification",
+			"timestamp": 1631661639,
+			"body": {
+				"from": "foo@bar.com",
+				"to": ["fiz@baz.com"],
+				"bcc": ["fuzz@baz.com"],
+				"subject": "Demo subject",
+				"body": "Some text"
+			}
+		},
+		"context": {
+			"error": "Cannot authenticate to SMTP server"
+		}
     }
 }

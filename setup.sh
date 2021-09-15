@@ -36,7 +36,7 @@ do
     docker exec -t broker sh -c 'kafka-topics.sh --create --topic '$topic' --bootstrap-server localhost:9092 ; exit $?'
 
     if [ $? -ne 0 ] ; then
-        echo "${RED}Error: coudn't create a topic \"$topic\""
+        echo "${RED}Error: couldn't create a topic \"$topic\""
         exit 1
     fi
 
@@ -47,7 +47,7 @@ do
     # docker exec -t broker sh -c 'kafka-topics.sh --alter --topic '$topic'  --config retention.ms=10800000 --bootstrap-server localhost:9092 ; exit $?'
     #
     # if [ $? -ne 0 ] ; then
-    #   echo "${RED}Error: coudn't change retention.ms config option for  topic \"$topic\""
+    #   echo "${RED}Error: couldn't change retention.ms config option for  topic \"$topic\""
     #   exit 1
     # fi
 
