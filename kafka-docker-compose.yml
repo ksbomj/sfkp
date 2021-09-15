@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  zookeeper:
+    build: ./docker/zookeeper
+    container_name: zookeeper
+    restart: always
+    volumes:
+      - ./zookeeper-data:/home/zookeeper/data
+    networks:
+      - kafka
+  
+  broker:
+    build: ./docker/broker
+    container_name: broker
+    restart: always
+    volumes:
+      - ./broker-data:/home/broker/data
+    depends_on:
+      - zookeeper
+    networks:
+     - ppe
+     - kafka
+  
+networks:
+  kafka:
+  ppe:
+    external: true

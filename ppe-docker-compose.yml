@@ -1,0 +1,63 @@
+version: "3.7"
+
+services:
+  consumer1:
+    build: ./docker/consumer
+    container_name: consumer1
+    depends_on:
+      - broker
+    networks:
+      - ppe
+
+  consumer2:
+    build: ./docker/consumer
+    container_name: consumer2
+    environment:
+      - TOPIC=order-created
+    depends_on:
+      - broker
+    networks:
+      - ppe
+
+  consumer3:
+    build: ./docker/consumer
+    container_name: consumer3
+    environment:
+      - TOPIC=order-confirmed
+    depends_on:
+      - broker
+    networks:
+      - ppe
+
+  consumer4:
+    build: ./docker/consumer
+    container_name: consumer4
+    environment:
+      - TOPIC=order-picked-and-packed
+    depends_on:
+      - broker
+    networks:
+      - ppe
+
+  consumer5:
+    build: ./docker/consumer
+    container_name: consumer5
+    environment:
+      - TOPIC=event-proccessing-error
+    depends_on:
+      - broker
+    networks:
+      - ppe
+
+  producer:
+    build: ./docker/producer
+    restart: always
+    depends_on:
+      - broker
+    container_name: producer
+    networks:
+      - ppe
+
+networks:
+  ppe:
+    name: ppe
