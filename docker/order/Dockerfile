@@ -1,12 +1,12 @@
 FROM alpine:latest as base
 
-RUN apk add go ca-certificates git
+RUN apk add go ca-certificates git librdkafka librdkafka-dev musl musl-dev gcc g++
 
 COPY ./services/order/ /order
 
 WORKDIR /order
 
-RUN ls -la && go mod vendor && go build .
+RUN ls -la && go mod vendor && CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -a -v -tags musl .
 
 FROM alpine:latest
 

@@ -3,7 +3,10 @@ package api
 import (
 	"context"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/ksbomj/sfkp/services/order/bus"
+	"github.com/ksbomj/sfkp/services/order/events"
+	"github.com/ksbomj/sfkp/services/order/models"
 	"log"
 	"net/http"
 	"sync"
@@ -76,5 +79,12 @@ func (rpi *RestApi) health(w http.ResponseWriter, r *http.Request) {
 }
 
 func (rpi *RestApi) storeOrder(w http.ResponseWriter, r *http.Request) {
+	var event events.OrderReceived
+	event.ID = uuid.New()
+	event.Timestamp = time.Now()
+	event.Body = models.Order{
+		ID: uuid.New(),
+	}
 
+	rpi.MessageBus.PublishEvent(event, "order-received")
 }

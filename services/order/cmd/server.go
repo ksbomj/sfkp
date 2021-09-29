@@ -63,7 +63,7 @@ func (s *ServerCommand) Execute(_ []string) error {
 // newServer builds a server
 func (s *ServerCommand) newServer(ctx context.Context) (*server, error) {
 
-	messageBus := bus.NewBus(s.BrokerAddress)
+	messageBus := bus.NewBus(s.BrokerAddress, s.Logger)
 
 	api := &api.RestApi{
 		Logger: s.Logger,

@@ -1,60 +1,28 @@
 version: "3.7"
 
 services:
-  consumer1:
+  order-consumer:
     build: ./docker/consumer
-    container_name: consumer1
-    depends_on:
-      - broker
-    networks:
-      - ppe
-
-  consumer2:
-    build: ./docker/consumer
-    container_name: consumer2
+    container_name: order-consumer
     environment:
-      - TOPIC=order-created
+      - TOPIC=order-received
     depends_on:
       - broker
     networks:
       - ppe
 
-  consumer3:
-    build: ./docker/consumer
-    container_name: consumer3
-    environment:
-      - TOPIC=order-confirmed
-    depends_on:
-      - broker
-    networks:
-      - ppe
-
-  consumer4:
-    build: ./docker/consumer
-    container_name: consumer4
-    environment:
-      - TOPIC=order-picked-and-packed
-    depends_on:
-      - broker
-    networks:
-      - ppe
-
-  consumer5:
-    build: ./docker/consumer
-    container_name: consumer5
-    environment:
-      - TOPIC=event-proccessing-error
-    depends_on:
-      - broker
-    networks:
-      - ppe
-
-  producer:
-    build: ./docker/producer
+  order:
+    build:
+      dockerfile: ./docker/order/Dockerfile
+      context: .
+    container_name: order
     restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost/health" ]
+      timeout: 10s
+      retries: 3
     depends_on:
       - broker
-    container_name: producer
     networks:
       - ppe
 
