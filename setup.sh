@@ -57,8 +57,10 @@ done
 
 echo "\n${GREEN}Producing events"
 
-docker logs producer
+docker logs order
 
 echo "\n${GREEN}Consuming events"
 
-docker-compose -f  kafka-docker-compose.yml -f ppe-docker-compose.yml logs -f consumer1 consumer2 consumer3 consumer4 consumer5
+docker-compose -f  kafka-docker-compose.yml -f ppe-docker-compose.yml logs -f order-consumer
+
+
